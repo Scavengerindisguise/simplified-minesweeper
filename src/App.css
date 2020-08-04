@@ -15,16 +15,13 @@ body {
   content: "";
 }
 
-.board{
-  
-}
 
 .game {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
   background: #4fc3f7;
-  margin-top: 15vh;
+  margin-top: 1vh;
 }
 .game .game-info {
   margin-bottom: 20px;
@@ -32,7 +29,7 @@ body {
   padding: 7px;
   text-align: center;
   color: #fff;
-  min-height: 50px;
+  min-height: 0px;
   border-radius: 7px;
 }
 .game .game-info .info {
@@ -60,7 +57,6 @@ body {
 }
 .game .hidden {
   background: #333333;
-  z-index: 10;
 }
 .game .is-flag,
 .game .is-mine {

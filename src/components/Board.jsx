@@ -202,7 +202,7 @@ class Board extends Component {
             <React.Fragment>
                 <div className="game-info">
                     <span className="info">
-                        mines: {this.state.mineCount}
+                        Mines: {this.state.mineCount}
                     </span>
                     <br />
                     <span className="info">

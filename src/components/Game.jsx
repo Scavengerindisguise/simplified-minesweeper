@@ -10,9 +10,12 @@ class Game extends Component {
     render() {
         const { height, width, mines } = this.state;
         return (
+            <>
+            <div className="text-center"><h2>Mine Sweeper</h2></div>
             <div className="game">
                 <Board height={height} width={width} mines={mines} />
             </div>
+            </>
         );
     }
 }
