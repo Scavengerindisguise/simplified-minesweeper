@@ -1,38 +1,68 @@
-.App {
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 20px;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.clear {
+  clear: both;
+  content: "";
+}
+
+.board{
+  
+}
+
+.game {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #4fc3f7;
+  margin-top: 15vh;
+}
+.game .game-info {
+  margin-bottom: 20px;
+  background: transparent;
+  padding: 7px;
   text-align: center;
+  color: #fff;
+  min-height: 50px;
+  border-radius: 7px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.game .game-info .info {
+  display: block;
+  margin-top: 15px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.game .game-info h1, .game .game-info p {
+  margin: 0;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.game .cell {
+  background: #FCFAF9;
+  border: 1px solid #48E5C2;
+  border-radius: 4px;
+  float: left;
+  line-height: 45px;
+  height: 45px;
+  text-align: center;
+  width: 45px;
+  cursor: pointer;
+  color: #333333;
+  font-weight: 600;
 }
-
-.App-link {
-  color: #61dafb;
+.game .cell:focus {
+  outline: none;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.game .hidden {
+  background: #333333;
+  z-index: 10;
+}
+.game .is-flag,
+.game .is-mine {
+  color: #fc543c;
 }
