@@ -211,7 +211,7 @@ class Board extends Component {
                         {this.state.gameStatus}
                     </span>
                 </div>
-                <div className="board" style={{gridTemplateColumns: `repeat(${this.props.width},auto)`}}>
+                <div className="board" style={{gridTemplateColumns: `repeat(${this.props.width},auto)`, maxWidth: this.props.width < 5 ? "200px" : "400px"}}>
                     {this.renderBoard(this.state.boardData)}
                 </div>
             </React.Fragment>

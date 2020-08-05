@@ -18,7 +18,7 @@ body {
   display: grid;
   grid-gap: 1px;
   margin: auto;
-  max-width: 500px;
+  /* max-width: 500px; */
 }
 .game {
   margin: 0 auto;
