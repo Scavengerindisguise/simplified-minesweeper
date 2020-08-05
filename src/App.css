@@ -14,10 +14,13 @@ body {
   clear: both;
   content: "";
 }
-
-
+.board{
+  display: grid;
+  grid-gap: 1px;
+  margin: auto;
+  max-width: 500px;
+}
 .game {
-  max-width: 400px;
   margin: 0 auto;
   padding: 20px;
   background: #4fc3f7;
@@ -43,11 +46,11 @@ body {
   background: #FCFAF9;
   border: 1px solid #48E5C2;
   border-radius: 4px;
-  float: left;
   line-height: 45px;
-  height: 45px;
+  height: 100%;
+  width: 100%;
+  margin: auto;
   text-align: center;
-  width: 45px;
   cursor: pointer;
   color: #333333;
   font-weight: 600;

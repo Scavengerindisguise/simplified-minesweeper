@@ -17,6 +17,7 @@ class Board extends Component {
     }
 
     plantMines(data, height, width, mines) {
+        console.log(height,width);
         let randomx, randomy, minesPlanted = 0;
         while (minesPlanted < mines) {
             randomx = this.getRandomNumber(width);
@@ -26,11 +27,12 @@ class Board extends Component {
                 minesPlanted++;
             }
         }
+        console.log(data);
         return data;
     }
 
     getRandomNumber(dimension) {
-        // console.log(Math.floor(Math.random()*1000), Math.floor((Math.random() * 1000) + 1) % dimension);
+        console.log((Math.random() * 1000),((Math.random() * 1000) + 1) % dimension,Math.floor((Math.random() * 1000) + 1) % dimension);
         return Math.floor((Math.random() * 1000) + 1) % dimension;
     }
 
@@ -111,7 +113,7 @@ class Board extends Component {
                 };
             }
         }
-        // console.log(data);
+        console.log(data);
         return data;
     }
 
@@ -209,8 +211,7 @@ class Board extends Component {
                         {this.state.gameStatus}
                     </span>
                 </div>
-                <div className="board">
-
+                <div className="board" style={{gridTemplateColumns: `repeat(${this.props.width},auto)`}}>
                     {this.renderBoard(this.state.boardData)}
                 </div>
             </React.Fragment>

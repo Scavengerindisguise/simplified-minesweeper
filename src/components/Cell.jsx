@@ -5,7 +5,7 @@ class Cell extends Component {
         const {value} = this.props;
         
         if (value.isMine) {
-          return <i class="fa fa-bomb" aria-hidden="true"></i>;
+          return <i className="fa fa-bomb" aria-hidden="true"></i>;
         }
         if (value.neighbour === 0) {
           return null;
