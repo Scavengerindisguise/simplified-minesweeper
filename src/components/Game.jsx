@@ -9,31 +9,51 @@ class Game extends Component {
         height: '',
         width: '',
         mines: 10,
-        isModalOpen: true
+        isModalOpen: true,
+        disableStartButton: true
     }
 
+    /** handleRowChange - Update State with number of rows
+     * @param{object} - onChange event 
+     */
     handleRowChange = (e) => {
-        console.log(e.target.value);
         const value = e.target.value;
         this.setState({ rows: value });
         e.preventDefault();
     }
 
+    /** handleRowChange - Update State with number of columns
+     * @param{object} - onChange event
+     */
     handleColumnChange = (e) => {
-        console.log(e.target.value);
         const value = e.target.value;
         this.setState({ columns: value });
         e.preventDefault();
 
     }
 
+    /** toggleModal - Close Modal on click of start button*/
     toggleModal = () => {
-        this.setState({
-            isModalOpen: !this.state.isModalOpen,
-            height: this.state.rows,
-            width: this.state.columns,
-            mines: Math.floor((1/3)*this.state.rows*this.state.columns)
-        });
+        if (this.state.rows > 1 && this.state.columns > 1) {
+            this.setState({
+                isModalOpen: !this.state.isModalOpen,
+                height: this.state.rows,
+                width: this.state.columns,
+                mines: Math.floor((1 / 3) * this.state.rows * this.state.columns)
+            });
+        } else {
+            this.setState({
+                errorMessage: 'Please Select More than 1 row and column'
+            });
+        }
+    }
+
+    getStatus(){
+        if(this.state.rows === ''){
+            return true;
+        } else if(this.state.columns === ''){
+            return true;
+        }
     }
 
 
@@ -48,19 +68,29 @@ class Game extends Component {
                     </div>
                 </div>
                 <Modal isOpen={this.state.isModalOpen}>
-                    <ModalHeader>Login</ModalHeader>
+                    <ModalHeader>Game Data</ModalHeader>
                     <ModalBody>
-                        <Form>
-                            <FormGroup>
-                                <Label htmlFor="rows">Enter No Of Rows</Label>
-                                <Input type="number" onChange={this.handleRowChange} id="rows" name="rows" value={this.state.rows} />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label htmlFor="columns">Enter No Of Columns</Label>
-                                <Input type="number" onChange={this.handleColumnChange} id="columns" name="columns" value={this.state.columns} />
-                            </FormGroup>
-                            <Button type="button" onClick={this.toggleModal} color="primary">Start</Button>
-                        </Form>
+                        <div className='row justify-content-center'>
+                            <div className='col-sm-7'>
+                                <Form>
+                                    <FormGroup>
+                                        <Label htmlFor="rows">Enter No of Rows</Label>
+                                        <Input type="number" bsSize="sm" onChange={this.handleRowChange} id="rows" name="rows" value={this.state.rows} />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label htmlFor="columns">Enter No of Columns</Label>
+                                        <Input type="number" bsSize="sm" onChange={this.handleColumnChange} id="columns" name="columns" value={this.state.columns} />
+                                    </FormGroup>
+                                </Form>
+                                <small className="form-text text-muted">
+                                    {this.state.errorMessage}
+                                </small>
+                                <p></p>
+                                <div className='row justify-content-end mr-1'>
+                                    <Button type="button" disabled={this.getStatus()} size='sm' onClick={this.toggleModal} color="primary">Start</Button>
+                                </div>
+                            </div>
+                        </div>
                     </ModalBody>
                 </Modal>
             </>
