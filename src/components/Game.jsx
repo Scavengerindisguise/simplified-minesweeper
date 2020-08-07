@@ -34,7 +34,10 @@ class Game extends Component {
 
     /** toggleModal - Close Modal on click of start button*/
     toggleModal = () => {
-        if (this.state.rows > 1 && this.state.columns > 1) {
+        if((this.state.rows || this.state.columns) > 14){
+            this.setState({
+                errorMessage: 'Maximum Number of rows and columns exceeded'
+            })} else if (this.state.rows > 1 && this.state.columns > 1) {
             this.setState({
                 isModalOpen: !this.state.isModalOpen,
                 height: this.state.rows,

@@ -27,10 +27,14 @@ class Board extends Component {
      * @param{number} - get mines
      */
     plantMines(data, height, width, mines) {
+        debugger
+        console.log(data);
         let randomx, randomy, minesPlanted = 0;
         while (minesPlanted < mines) {
-            randomx = this.getRandomNumber(width);
-            randomy = this.getRandomNumber(height);
+            randomx = this.getRandomNumber(height);
+            randomy = this.getRandomNumber(width);
+            console.log(randomx,randomy);
+            console.log(data[randomx][randomy]);
             if (!(data[randomx][randomy].isMine)) {
                 data[randomx][randomy].isMine = true;
                 minesPlanted++;
@@ -42,7 +46,9 @@ class Board extends Component {
 
     /** Get Random row or column to plant mines */
     getRandomNumber(dimension) {
-        return Math.floor((Math.random() * 1000) + 1) % dimension;
+        let x = Math.random() * 1000;
+        console.log(x);
+        return Math.floor(x + 1) % dimension;
     }
 
 
