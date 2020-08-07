@@ -23,7 +23,7 @@ body {
 .game {
   margin: 0 auto;
   padding: 20px;
-  background: #4fc3f7;
+  background: #3eb0e6;
   margin-top: 1vh;
 }
 .game .game-info {
@@ -64,4 +64,13 @@ body {
 .game .is-flag,
 .game .is-mine {
   color: #fc543c;
+}
+.react-stopwatch-timer__table {
+  height: 25px !important;
+  width: 100% !important;
+  position: none;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

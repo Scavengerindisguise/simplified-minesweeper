@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cell from './Cell';
+import ReactTimerStopwatch from 'react-stopwatch-timer';
 
 class Board extends Component {
     state = {
@@ -27,14 +28,10 @@ class Board extends Component {
      * @param{number} - get mines
      */
     plantMines(data, height, width, mines) {
-        debugger
-        console.log(data);
         let randomx, randomy, minesPlanted = 0;
         while (minesPlanted < mines) {
             randomx = this.getRandomNumber(height);
             randomy = this.getRandomNumber(width);
-            console.log(randomx,randomy);
-            console.log(data[randomx][randomy]);
             if (!(data[randomx][randomy].isMine)) {
                 data[randomx][randomy].isMine = true;
                 minesPlanted++;
@@ -47,7 +44,6 @@ class Board extends Component {
     /** Get Random row or column to plant mines */
     getRandomNumber(dimension) {
         let x = Math.random() * 1000;
-        console.log(x);
         return Math.floor(x + 1) % dimension;
     }
 
@@ -314,11 +310,19 @@ class Board extends Component {
 
 
     render() {
+        const fromTime = new Date(0, 0, 0, 0, 0, 0, 0);
         return (
             <React.Fragment>
                 <div className="game-info">
                     <span className="info">
-                        Mines: {this.state.mineCount}
+                        <div className='row justify-content-center'>
+                            <div className='col-sm-6'>
+                                <i className="fa fa-bomb text-danger" aria-hidden="true"></i>  Mines: {this.state.mineCount}
+                            </div>
+                            <div className='col-sm-6'>
+                              <ReactTimerStopwatch fromTime={fromTime} className="mines-stopwatch" isOn={true} watchType="stopwatch" />
+                            </div>
+                        </div>
                     </span>
                     <br />
                     <span className="info">

@@ -66,7 +66,7 @@ class Game extends Component {
             <>
                 <div>
                     <div className="text-center"><h2>Mine Sweeper</h2></div>
-                    <div className="game">
+                    <div className="game text-white">
                         {this.state.width !== '' && this.state.height !== '' ? <Board height={height} width={width} mines={mines} /> : 'Enter Number of Rows And Columns'}
                     </div>
                 </div>
