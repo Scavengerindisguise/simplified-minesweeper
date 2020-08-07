@@ -34,10 +34,11 @@ class Game extends Component {
 
     /** toggleModal - Close Modal on click of start button*/
     toggleModal = () => {
-        if((this.state.rows || this.state.columns) > 14){
+        if ((this.state.rows || this.state.columns) > 14) {
             this.setState({
                 errorMessage: 'Maximum Number of rows and columns exceeded'
-            })} else if (this.state.rows > 1 && this.state.columns > 1) {
+            })
+        } else if (this.state.rows > 1 && this.state.columns > 1) {
             this.setState({
                 isModalOpen: !this.state.isModalOpen,
                 height: this.state.rows,
@@ -51,10 +52,10 @@ class Game extends Component {
         }
     }
 
-    getStatus(){
-        if(this.state.rows === ''){
+    getStatus() {
+        if (this.state.rows === '') {
             return true;
-        } else if(this.state.columns === ''){
+        } else if (this.state.columns === '') {
             return true;
         }
     }
@@ -85,6 +86,9 @@ class Game extends Component {
                                         <Input type="number" bsSize="sm" onChange={this.handleColumnChange} id="columns" name="columns" value={this.state.columns} />
                                     </FormGroup>
                                 </Form>
+                                <small className="form-text text-muted text-center">
+                                    Enter Rows and Columns from 2 - 14
+                                </small>
                                 <small className="form-text text-muted">
                                     {this.state.errorMessage}
                                 </small>
