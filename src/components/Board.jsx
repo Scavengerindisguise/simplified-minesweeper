@@ -6,7 +6,8 @@ class Board extends Component {
     state = {
         boardData: this.initBoardData(this.props.height, this.props.width, this.props.mines),
         gameStatus: "Game in progress",
-        mineCount: this.props.mines
+        mineCount: this.props.mines,
+        timerStatus: true
     }
 
     /** Initiate all Board data 
@@ -239,7 +240,10 @@ class Board extends Component {
         if (this.state.boardData[x][y].isRevealed || this.state.boardData[x][y].isFlagged) return null;
         // check if mine. game over if true
         if (this.state.boardData[x][y].isMine) {
-            this.setState({ gameStatus: "You Lost." });
+            this.setState({ 
+                gameStatus: "You Lost.",
+                timerStatus: false
+         });
             this.revealBoard();
             alert("game over");
         }
@@ -250,7 +254,10 @@ class Board extends Component {
             updatedData = this.revealEmpty(x, y, updatedData);
         }
         if (this.getHidden(updatedData).length === this.props.mines) {
-            this.setState({ gameStatus: "You Win." });
+            this.setState({ 
+                gameStatus: "You Win.",
+                timerStatus: false
+            });
             this.revealBoard();
             alert("You Win");
         }
@@ -320,16 +327,16 @@ class Board extends Component {
                                 <i className="fa fa-bomb text-danger" aria-hidden="true"></i>  Mines: {this.state.mineCount}
                             </div>
                             <div className='col-sm-6'>
-                              <ReactTimerStopwatch fromTime={fromTime} className="mines-stopwatch" isOn={true} watchType="stopwatch" />
+                              <ReactTimerStopwatch fromTime={fromTime} className="mines-stopwatch" isOn={this.state.timerStatus} watchType="stopwatch" />
                             </div>
                         </div>
                     </span>
                     <br />
                     <span className="info">
-                        {this.state.gameStatus}
+                        {this.state.gameStatus}{this.state.gameStatus === 'You Lost.' ? <span style={{cursor: 'pointer'}} className='text-danger' onClick={() => window.location.reload(false)}>{' '}<u>Play Again</u></span>: ''}
                     </span>
                 </div>
-                <div className="board" style={{ gridTemplateColumns: `repeat(${this.props.width},auto)`, maxWidth: this.props.width < 5 ? "200px" : "400px" }}>
+                <div className="board" style={{ gridTemplateColumns: `repeat(${this.props.width},auto)`, maxWidth: this.props.width < 6 ? "300px" : "620px" }}>
                     {this.renderBoard(this.state.boardData)}
                 </div>
             </React.Fragment>
